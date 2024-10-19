@@ -7,6 +7,11 @@ export default function TaskList({
   onToggleCompletion,
   onDeleteTask,
 }) {
+
+  if (!tasks || tasks.length === 0) {
+    return <p>No tasks available</p>;
+  }
+
   // Separating tasks into two groups: completed and incomplete
   const pendingTasks = tasks.filter((task) => !task.completed);
   const completedTasks = tasks.filter((task) => task.completed);
@@ -15,13 +20,13 @@ export default function TaskList({
   const sortedTasks = [...pendingTasks, ...completedTasks];
 
   const highPriorityTasks = sortedTasks.filter(
-    (task) => task.priority === "high"
+    (task) => task?.priority === "high"
   );
   const mediumPriorityTasks = sortedTasks.filter(
-    (task) => task.priority === "medium"
+    (task) => task?.priority === "medium"
   );
   const lowPriorityTasks = sortedTasks.filter(
-    (task) => task.priority === "low"
+    (task) => task?.priority === "low"
   );
 
   return (

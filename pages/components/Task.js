@@ -28,16 +28,20 @@ const Task = ({
     );
   };
 
+  if (!task) {
+    return null; // Don't render anything if the task is undefined
+  }
+
   return (
     <div
-      className={`task ${task.priority} ${
-        task.completed ? "completed-task" : ""
+      className={`task ${task?.priority} ${
+        task?.completed ? "completed-task" : ""
       }`}
     >
       <div className="task-heading">
         <h3
           style={{
-            textDecoration: task.completed ? "line-through" : "none",
+            textDecoration: task?.completed ? "line-through" : "none",
           }}
         >
           {highlightText(task.title, query)} {/* Highlight title */}
