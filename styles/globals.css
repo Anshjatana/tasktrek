@@ -1,42 +1,335 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
+/* General container layout */
 * {
-  box-sizing: border-box;
-  padding: 0;
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+html {
+  background: rgba(39, 64, 94, 1);
+  background: linear-gradient(
+    180deg,
+    rgba(39, 64, 94, 0.85),
+    rgba(255, 255, 255, 1) 13%
+  );
+  padding-bottom: 2rem;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+#heading {
+  font-size: 2.5rem;
+  margin: 1rem auto;
+  margin-bottom: 0.2rem;
+  text-align: center;
+  width: 100%;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+#heading-description {
+  font-size: 1.2rem;
+  margin: 1rem auto;
+  text-align: center;
+  width: 100%;
+  margin-top: -10px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+.search-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 3rem;
+  align-items: center;
+  gap: 10px;
+}
+.search-tasks {
+  width: 98%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+/* Task list columns layout */
+.task-list-columns {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+}
+.task-columns {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Individual task columns */
+.task-column {
+  width: 31%;
+  padding: 1.5rem;
+  background-color: #f9f9f9;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.task-column.high {
+  border-left: 5px solid red;
+}
+.task-column.medium {
+  border-left: 5px solid orange;
+}
+.task-column.low {
+  border-left: 5px solid green;
+}
+.task-heading {
+  display: flex;
+  justify-content: space-between;
+}
+.task-heading button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.task-column h2 {
+  text-align: left;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+/* Tasks styling */
+.task {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 12px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.task.high {
+  border-left: 5px solid red;
+}
+
+.task.medium {
+  border-left: 5px solid orange;
+}
+
+.task.low {
+  border-left: 5px solid green;
+}
+
+.task-heading h3 {
+  width: 65%;
+}
+
+.completed-task {
+  background-color: #f0f0f0;
+  color: #888;
+}
+
+/* Add Task Form */
+.add-task-form {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.add-task {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-task input,
+.add-task textarea,
+.add-task select,
+.add-task button {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.add-task button {
+  background-color: #0070f3;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.add-task button:hover {
+  background-color: #005bb5;
+}
+
+/* Button to open modal */
+.open-modal-btn {
+  background-color: #001e41;
+  color: white;
+  width: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.open-modal-btn:hover {
+  background-color: #001e41d8;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 500px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content h2 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+.modal-button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.modal-button-container button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.add-task input,
+.add-task textarea,
+.add-task select,
+.add-task button {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.add-task label {
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+.add-task button {
+  background-color: #001e41;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.add-task button:hover {
+  background-color: #001e41d8;
+}
+
+/* Cancel Button */
+#cancel-btn {
+  background-color: red;
+  color: white;
+}
+
+#cancel-btn:hover {
+  background-color: #ff0000c4;
+}
+
+@media screen and (max-width: 1024px) {
+  .open-modal-btn {
+    width: 30%;
   }
+  .task-list-columns {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .task-column {
+    width: 100%;
+  }
+  .task-heading h3 {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .open-modal-btn {
+    width: 40%;
+  }
+  .main .hero-image {
+    width: 82%;
+    aspect-ratio: auto;
+    object-fit: contain;
+  }
+}
+
+@media screen and (max-width: 524px) {
+  .open-modal-btn {
+    width: 60%;
+  }
+  .main .hero-image {
+    width: 85%;
+    aspect-ratio: auto;
+    object-fit: contain;
+  }
+  .search-container {
+    margin: 1rem 1rem;
+  }
+  .search-icon {
+    width: 40px;
+  }
+  .modal-content {
+    width: 80%;
+  }
+}
+
+/* Scrollbar Modification */
+::-webkit-scrollbar {
+  width: 6px; /* Adjust the width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: white; /* Track background color */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: gray; /* Thumb color */
+  border-radius: 10px; /* Rounded corners for the thumb */
+}
+
+::-webkit-scrollbar-thumb {
+  background: lightgray;
+  border-radius: 10px; /* Thumb color on hover */
 }
