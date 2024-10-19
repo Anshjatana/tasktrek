@@ -2,6 +2,9 @@
 
 TaskTrek is a simple and efficient task manager that helps you manage tasks based on their priority. It allows you to add, edit, delete, and search tasks, with responsive design and task completion tracking. The tasks are persisted using local storage to survive page reloads.
 
+## Github Repo link
+https://github.com/Anshjatana/tasktrek
+
 ## Features
 
 ### 1. **Task Priority Columns**
