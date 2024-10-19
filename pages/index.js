@@ -35,7 +35,7 @@ export async function getServerSideProps() {
   return { props: { initialTasks: tasks } };
 }
 
-export default function Home({ initialTasks }) {
+export default function Home({ initialTasks = [] }) {
   const [taskList, setTaskList] = useState([]);
   const [taskToEdit, setTaskToEdit] = useState(null);
   const [filteredTasks, setFilteredTasks] = useState([]);
@@ -114,41 +114,40 @@ export default function Home({ initialTasks }) {
     <>
       <Head>
         <title>TaskTrek</title>
-        <meta name="description" content="A simple and efficient task manager with priority-based organization." />
+        <meta
+          name="description"
+          content="A simple and efficient task manager with priority-based organization."
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-    <>
-      <div className="main">
-        <h1 id="heading">TaskTrek</h1>
-        <p id="heading-description">
-          Track your tasks and manage efficiently...
-        </p>
-        <Image
-          src={taskGIF}
-          className="hero-image"
-          alt="TaskTrek"
-        />
-      </div>
-      <div className="search-container">
-        <Search size={24} className="search-icon" />
-        <SearchTasks onSearch={handleSearch} />
-        <AddTaskModal
-          onAddTask={addTask}
-          taskToEdit={taskToEdit}
-          onSaveTask={saveTask}
-        />
-      </div>
-      <div className="container">
-        <TaskList
-          addTask={addTask}
-          tasks={filteredTasks}
-          onEditTask={handleEditTask}
-          onToggleCompletion={toggleCompletion}
-          onDeleteTask={deleteTask}
-        />
-      </div>
-    </>
+      <>
+        <div className="main">
+          <h1 id="heading">TaskTrek</h1>
+          <p id="heading-description">
+            Track your tasks and manage efficiently...
+          </p>
+          <Image src={taskGIF} className="hero-image" alt="TaskTrek" />
+        </div>
+        <div className="search-container">
+          <Search size={24} className="search-icon" />
+          <SearchTasks onSearch={handleSearch} />
+          <AddTaskModal
+            onAddTask={addTask}
+            taskToEdit={taskToEdit}
+            onSaveTask={saveTask}
+          />
+        </div>
+        <div className="container">
+          <TaskList
+            addTask={addTask}
+            tasks={filteredTasks}
+            onEditTask={handleEditTask}
+            onToggleCompletion={toggleCompletion}
+            onDeleteTask={deleteTask}
+          />
+        </div>
+      </>
     </>
   );
 }
