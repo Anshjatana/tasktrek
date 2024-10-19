@@ -1,4 +1,3 @@
-
 import Task from "./Task";
 
 export default function TaskList({
@@ -7,9 +6,14 @@ export default function TaskList({
   onToggleCompletion,
   onDeleteTask,
 }) {
-
   if (!tasks || tasks.length === 0) {
-    return <p>No tasks available</p>;
+    return (
+      <p
+        style={{ textAlign: "center", marginLeft: "auto", marginRight: "auto" }}
+      >
+        No tasks available! Add up...
+      </p>
+    );
   }
 
   // Separating tasks into two groups: completed and incomplete
@@ -94,4 +98,3 @@ export default function TaskList({
     </div>
   );
 }
-
