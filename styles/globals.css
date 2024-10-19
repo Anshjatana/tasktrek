@@ -14,6 +14,7 @@ html {
     rgba(255, 255, 255, 1) 13%
   );
   padding-bottom: 2rem;
+  background-repeat: no-repeat;
 }
 .main {
   display: flex;
