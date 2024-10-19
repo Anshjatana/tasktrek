@@ -47,16 +47,16 @@ TaskTrek is a simple and efficient task manager that helps you manage tasks base
    ```bash
    git clone https://github.com/your-username/tasktrek.git
    ```
-   2. Navigate to the project directory:
+2. Navigate to the project directory:
    ```bash
    cd tasktrek
    ```
-   3. Install dependencies:
+3. Install dependencies:
    ```bash
    npm install
    ```
-   4. Run the development server:
+4. Run the development server:
    ```bash
    npm run dev
    ```
-   Open http://localhost:3000 in your browser to see the application.
+Open http://localhost:3000 in your browser to see the application.
